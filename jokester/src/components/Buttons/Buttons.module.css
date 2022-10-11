@@ -1,0 +1,39 @@
+.gridContainer{
+    display: grid;
+    grid-template-areas:
+    'elemTwo elemOne';
+    gap: 10px;
+}
+
+/* Responsive: */
+@media only screen and (orientation: portrait) {
+    .gridContainer{
+        display: grid;
+        grid-template-areas:
+        'elemOne'
+        'elemTwo';
+        gap: 10px;
+    }
+  }
+
+.btnContainer{
+    border: 1px solid black;
+    /* width: 40%; */
+    display: flex;
+    margin: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btnContainer > div{
+    flex: 1;
+    min-width: 10%;
+    /* max-width: 101px; */
+    padding: 15px;
+    margin: 4px;
+    border: 1px solid rgba(103, 103, 247, 0.705);
+    border-radius: 100px;
+    cursor: pointer;
+    text-align: center;
+}
+
