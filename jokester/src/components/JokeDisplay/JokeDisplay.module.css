@@ -4,6 +4,7 @@
     text-align: center;
     padding: 20px;
     font-family: 'Josefin Sans', sans-serif;
+    position: relative;
 }
 
 .headerFont{

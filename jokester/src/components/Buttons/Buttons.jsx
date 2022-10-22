@@ -32,18 +32,18 @@ function Buttons(){
     }
     return(
         <div className={styles.gridContainer}>
+            <div className={`${styles.elemOne} ${styles.jokeDisplayBox}`}>
+                <JokeDisplay jokeChange={jokeChange} joketype={joketype} setup={setUp} line={line}/>
+            </div>
             <div className={`${styles.btnContainer} ${styles.elemTwo}`}>
                 {
                     jokeTopicArr.map(item => {
 
                         return(
-                            <div onClick={()=>handleBtnClick(item) }> {item} </div>
+                            <div className={styles.buttons} onClick={()=>handleBtnClick(item) }> {item} </div>
                         )
                     })
                 }
-            </div>
-            <div className={styles.elemOne}>
-                <JokeDisplay jokeChange={jokeChange} joketype={joketype} setup={setUp} line={line}/>
             </div>
         </div>
     )
