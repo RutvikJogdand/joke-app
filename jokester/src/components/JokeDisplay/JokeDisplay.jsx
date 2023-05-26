@@ -6,17 +6,9 @@ function JokeDisplay(props){
     const [userLine, setUserLine] = useState('')
     const [inputValue, setInputValue] = useState('')
     const [originalLine, setOriginalLine] = useState(false)
-    const [inputActive, setInputActive] = useState(false)
 
     const handleChange = (event) => {
         setInputValue(event.target.value)
-        if(event.target.value !== ''){
-            setInputActive(true)
-        }
-        if(event.target.value === ''){
-            setInputActive(false)
-        }
-        
     }
 
     const displayOriginalLine = () => {
