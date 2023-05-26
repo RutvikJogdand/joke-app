@@ -1,6 +1,6 @@
 .jokeDisplayContainer{
-    border: 1px solid black;
-    /* height: 50%; */
+    border: 1px solid rgb(144, 32, 32);
+    height: 50%vw;
     text-align: center;
     padding: 20px;
     font-family: 'Josefin Sans', sans-serif;
@@ -10,3 +10,46 @@
 .headerFont{
     font-size: 24px;
 }
+
+.btnMain{
+    margin-top: 15px;
+}
+
+.inputField {
+    position: relative;
+    width: 200px;
+    overflow: hidden;
+    margin: auto;
+  }
+
+.inputField input {
+    border: none;
+    outline: none;
+    width: 100%;
+    background: transparent;
+  }
+
+.inputField:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 20%;
+    height: 2px;
+    background-color: #000;
+    transition: width 0.3s ease-in-out;
+    transform: translateX(-50%);
+  }
+
+.inputField:hover:before,
+  .inputField:not(.empty):before {
+    width: 100%;
+    left: 0%;
+    transform: translateX(0%);
+  }
+
+  .inputIsActive{
+    width: 100%;
+    left: 0%;
+    transform: translateX(0%);
+  }

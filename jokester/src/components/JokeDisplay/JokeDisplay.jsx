@@ -6,15 +6,23 @@ function JokeDisplay(props){
     const [userLine, setUserLine] = useState('')
     const [inputValue, setInputValue] = useState('')
     const [originalLine, setOriginalLine] = useState(false)
+    const [inputActive, setInputActive] = useState(false)
 
     const handleChange = (event) => {
         setInputValue(event.target.value)
+        if(event.target.value !== ''){
+            setInputActive(true)
+        }
+        if(event.target.value === ''){
+            setInputActive(false)
+        }
+        
     }
 
     const displayOriginalLine = () => {
         if(props.jokeChange === true){
             setOriginalLine(true)
-            setUserLine('')
+            // setUserLine('')
             setInputValue('')
         }
         setOriginalLine(!originalLine)
@@ -28,6 +36,9 @@ function JokeDisplay(props){
             <div className={styles.headerFont}> {props.setup} </div>
             <br/>
             {
+                props.line === '' && props.joketype === '' ?
+                <p>Click on the button precious</p>
+                :
                 props.joketype === "single" &&
                 props.line
             }
@@ -44,13 +55,22 @@ function JokeDisplay(props){
                 originalLine === false && props.joketype === 'twopart' &&
                 <>
                 <br/>
-                <input type='text' name='userLine' value={inputValue} onChange={(event) => handleChange(event)} />
-                <button onClick={handleUserLine}>Submit</button>
+                <div className={`${styles.inputField} ${inputValue ? '' : styles.empty}`}>
+                    <input  type='text' name='userLine' value={inputValue} onChange={(event) => handleChange(event)} />
+                </div>
+                <br/>
+                <button className={ `${styles.btnMain} ${styles.submitbtn}` } onClick={handleUserLine}>Submit</button>
                 </>
             }
             {
-                props.joketype !== 'single' &&
-            <button onClick={displayOriginalLine}> {originalLine === true ? 'Hide original Punchline' : ' View Original Punchline'}</button>
+                props.joketype !== 'single' && props.joketype !== '' &&
+                <>
+                    {
+                        originalLine&&
+                        <br/>
+                    }
+                    <button className={ `${styles.btnMain} ${styles.punchlineViewHideBtn}` } onClick={displayOriginalLine}> {originalLine === true ? 'Hide original Punchline' : ' View Original Punchline'}</button>
+                </>
             }
         </div>
     )
