@@ -51,7 +51,7 @@ function JokeDisplay(props){
                     <input  type='text' name='userLine' value={inputValue} onChange={(event) => handleChange(event)} />
                 </div>
                 <br/>
-                <button className={ `${styles.btnMain} ${styles.submitbtn}` } onClick={handleUserLine}>Submit</button>
+                <button className={ `${styles.btnMain} ${styles.submitbtn} btn btn-dark me-2` } onClick={handleUserLine}>Submit</button>
                 </>
             }
             {
@@ -61,7 +61,7 @@ function JokeDisplay(props){
                         originalLine&&
                         <br/>
                     }
-                    <button className={ `${styles.btnMain} ${styles.punchlineViewHideBtn}` } onClick={displayOriginalLine}> {originalLine === true ? 'Hide original Punchline' : ' View Original Punchline'}</button>
+                    <button className={ `${styles.btnMain} ${styles.punchlineViewHideBtn} btn btn-dark` } onClick={displayOriginalLine}> {originalLine === true ? 'Hide original Punchline' : ' View Original Punchline'}</button>
                 </>
             }
         </div>

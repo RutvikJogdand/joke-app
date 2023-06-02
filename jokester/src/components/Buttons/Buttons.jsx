@@ -70,7 +70,7 @@ function Buttons(){
                     jokeTopicArr.map(item => {
 
                         return(
-                            <button className={`${styles.buttons} rounded-pill`} onClick={()=>handleBtnClick(item.jokeType) }> <i className={item.btnIcon}></i> </button>
+                            <button className={`${styles.buttons} btn btn-dark rounded-pill`} onClick={()=>handleBtnClick(item.jokeType) }> <i className={item.btnIcon}></i> </button>
                         )
                     })
                 }

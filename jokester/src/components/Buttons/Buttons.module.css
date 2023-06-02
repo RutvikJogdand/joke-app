@@ -1,11 +1,9 @@
 .btnContainer{
-    border: 1px solid black;
     text-align: center;
     margin-top: 80/vh;
 }
 
 .buttons{
-    border: 1px solid black;
     padding: 7px 13px;
     margin: 4px;
 }
