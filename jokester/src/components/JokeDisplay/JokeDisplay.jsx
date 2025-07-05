@@ -23,8 +23,30 @@ function JokeDisplay(props){
     const handleUserLine = () => {
         setUserLine(inputValue)
     }
+    const [alertVisible, setAlertVisible] = useState(false);
+
+    const copyToClipboard = () => {
+        let textToCopy = props.setup;
+        if (props.joketype === 'twopart') {
+            if (originalLine || userLine) {
+            textToCopy += ` ${originalLine ? props.line : userLine}`;
+            } else {
+            textToCopy += ' _______';
+            }
+        } else if (props.joketype === 'single') {
+            textToCopy = props.line;
+        }
+
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            setAlertVisible(true);
+            setTimeout(() => setAlertVisible(false), 3000); // Hide alert after 3 seconds
+        }).catch(err => {
+            console.error('Failed to copy: ', err);
+        });
+    }
+
     return(
-        <div className={styles.jokeDisplayContainer}>
+        <div id='main-joke-container' className={styles.jokeDisplayContainer}>
             <div className={styles.headerFont}> {props.setup} </div>
             <br/>
             {
@@ -64,9 +86,19 @@ function JokeDisplay(props){
                     <button className={ `${styles.btnMain} ${styles.punchlineViewHideBtn} btn btn-dark` } onClick={displayOriginalLine}> {originalLine === true ? 'Hide original Punchline' : ' View Original Punchline'}</button>
                 </>
             }
+            {alertVisible && (
+                <small style={{position:'fixed', top:'10px', left:'50%', transform:'translateX(-50%)'}} className="alert alert-success" role="alert">
+                    Joke copied to clipboard!
+                </small>
+            )}
+            {
+                props.joketype &&
+                <>
+                &nbsp;<button className={ `${styles.btnMain} ${styles.copyBtn} btn btn-dark` } onClick={copyToClipboard} title="Copy your joke to clipboard! Click me"><i className="fa fa-copy"></i> </button>
+                </>
+            }
         </div>
     )
-
 }
 
 export default JokeDisplay

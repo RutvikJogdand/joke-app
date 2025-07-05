@@ -37,11 +37,13 @@ function Buttons(){
     const handleBtnClick = (jokeTopic) => {
 
         setLoading(1)
-        console.log(`${process.env.REACT_APP_JOKE}/${jokeTopic}`)
-        axios.get(`${process.env.REACT_APP_JOKE}/${jokeTopic}`)
+        // console.log(`${process.env.REACT_APP_JOKE}/${jokeTopic}`)
+        axios.post(`${process.env.REACT_APP_JOKE}`,{
+            jokeTopic: jokeTopic
+        })
         .then(res => {
-            console.log(res)
-            console.log(setLoading(2))
+            res = res.data;
+            setLoading(2);
             setJokeChange(true)
             setType(res.data.type)
             setSetUp(res.data.setup)
@@ -49,18 +51,18 @@ function Buttons(){
             setClearOldLine(true)
         })
         .catch(err => {
-            console.log(err)
+            // console.log(err)
             setLoading(3)
         })
 
-        console.log(jokeTopic)
+        // console.log(jokeTopic)
     }
     return(
         <div className={styles.gridContainer}>
             <div className={`${styles.elemOne} ${styles.jokeDisplayBox}`}>
                 {
                     loading === 1?
-                    'loading'
+                    <div style={{textAlign:"center"}}> loading </div>
                     :
                     <JokeDisplay clearOldLine={clearOldLine} setClearOldLine={setClearOldLine} jokeChange={jokeChange} joketype={joketype} setup={setUp} line={line}/>
                 }
